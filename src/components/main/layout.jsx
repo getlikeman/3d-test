@@ -2,7 +2,7 @@ import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card.jsx
 import {Button} from "@/components/ui/button.jsx";
 import {FaEnvelope, FaInstagram, FaTelegram, FaWhatsapp} from "react-icons/fa6";
 import {useColorStore} from '@/components/main/store.js'
-import { clsx } from 'clsx';
+import {clsx} from 'clsx';
 import {
     AlertDialog,
     AlertDialogAction,
@@ -14,7 +14,8 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import { useToast } from "@/components/ui/use-toast"
+import {useToast} from "@/components/ui/use-toast"
+
 const list = [
     {icon: <FaTelegram/>},
     {icon: <FaWhatsapp/>},
@@ -28,7 +29,7 @@ export default function Layout() {
     const {toast}=useToast()
     return (<>
         <header className={'absolute w-screen h-16 bg-card top-0 flex flex-row justify-evenly  items-center'}>
-            <img src="/logo.png" width={200} alt=""/>
+            <img src="/src/assets/logo.png" width={200} alt=""/>
             <nav>
                 <ul className={'flex flex-row gap-4'}>
                     {list.map(({icon}) => <li key={self.crypto.randomUUID()}>{icon}</li>)}
