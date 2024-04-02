@@ -10,14 +10,14 @@ import {
     Texture,
 
 } from "@babylonjs/core";
+
 import SceneComponent from "./SceneComponent";
 import {useColorStore} from "@/components/main/store.js";
-
 let box;
 
 const  onSceneReady =(scene) => {
 
-   SceneLoader.ImportMesh('',`/`,'bag.babylon',scene,(meshes)=>{
+   SceneLoader.ImportMesh('','./src/assets/', 'scene.babylon',scene,(meshes)=>{
        box=meshes[0]
    })
     const camera =new ArcRotateCamera("Camera", 0, 0, 10, new Vector3(0, 0, 0), scene);
