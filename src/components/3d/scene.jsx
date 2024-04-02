@@ -7,7 +7,8 @@ import {
     ArcRotateCamera,
     Color3,
     SceneLoader,
-    Texture
+    Texture,
+
 } from "@babylonjs/core";
 import SceneComponent from "./SceneComponent";
 import {useColorStore} from "@/components/main/store.js";
@@ -16,7 +17,7 @@ let box;
 
 const  onSceneReady =(scene) => {
 
-   SceneLoader.ImportMesh('','../src/components/3d/models/','scene.babylon',scene,(meshes)=>{
+   SceneLoader.ImportMesh('',`/`,'bag.babylon',scene,(meshes)=>{
        box=meshes[0]
    })
     const camera =new ArcRotateCamera("Camera", 0, 0, 10, new Vector3(0, 0, 0), scene);
@@ -52,10 +53,9 @@ export default  function Scene() {
             box.scaling.x=0.5
             box.scaling.y=0.5
             box.scaling.z=0.5
-            box.position.y=-10
+            box.position.y=-20
             box.rotation.x=180
             const myMaterial = new StandardMaterial("myMaterial", scene);
-            // myMaterial.diffuseTexture= new Texture('../src/assets/52639e59b0331bf8f85743faef8cf42f8e873aae_2_500x500.png',scene)
             myMaterial.diffuseColor=new Color3(r,g,b)
             box.material=myMaterial
 
