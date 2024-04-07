@@ -7,7 +7,7 @@ let box;
 
 const  onSceneReady =(scene) => {
 
-   SceneLoader.ImportMesh('',`/3d-test/`, 'scene.babylon',scene,(meshes)=>{
+   SceneLoader.ImportMesh('',`${window.location.origin}/3d-test/`, 'scene.babylon',scene,(meshes)=>{
        box=meshes[0]
    })
     const camera =new ArcRotateCamera("Camera", 0, 0, 10, new Vector3(0, 0, 0), scene);
