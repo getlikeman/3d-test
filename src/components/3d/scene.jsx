@@ -1,23 +1,13 @@
-import {
-    StandardMaterial,
-    FreeCamera,
-    Vector3,
-    HemisphericLight,
-    MeshBuilder,
-    ArcRotateCamera,
-    Color3,
-    SceneLoader,
-    Texture,
-
-} from "@babylonjs/core";
+import {ArcRotateCamera, Color3, HemisphericLight, SceneLoader, StandardMaterial, Vector3,} from "@babylonjs/core";
 
 import SceneComponent from "./SceneComponent";
 import {useColorStore} from "@/components/main/store.js";
+
 let box;
 
 const  onSceneReady =(scene) => {
 
-   SceneLoader.ImportMesh('',`${window.location.href}`, 'scene.babylon',scene,(meshes)=>{
+   SceneLoader.ImportMesh('',`${window.location.origin}/`, 'scene.babylon',scene,(meshes)=>{
        box=meshes[0]
    })
     const camera =new ArcRotateCamera("Camera", 0, 0, 10, new Vector3(0, 0, 0), scene);

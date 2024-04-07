@@ -28,6 +28,19 @@ export default function Layout() {
     const  colors=useColorStore(state => state.colors)
     const  currentColor=useColorStore(state => state.currentColor)
     const {toast}=useToast()
+    function sendToMaster() {
+        toast({
+            title:'Ваш заказ принят.',
+            description:'Наш мастер скоро займется заказом.Ссылка на заказ сохранена в буфер обмена'
+        })
+        if(history.pushState) {
+            history.pushState(null, null, `${currentColor}`);
+        }
+        else {
+            location.hash = `${currentColor}`;
+        }
+        navigator.clipboard.writeText(location.href);
+    }
     return (<>
         <header className={'absolute w-screen h-16 bg-card top-0 flex flex-row justify-evenly  items-center'}>
             <img src={logo} width={200} alt=""/>
@@ -62,10 +75,7 @@ export default function Layout() {
                         </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                        <AlertDialogCancel onClick={()=>toast({
-                                title:'Ваш заказ принят.',
-                                description:'Наш мастер скоро займется заказом.'
-                        })}>Да</AlertDialogCancel>
+                        <AlertDialogCancel onClick={sendToMaster}>Да</AlertDialogCancel>
                         <AlertDialogAction>Нет</AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>
